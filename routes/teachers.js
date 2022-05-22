@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Test = require("../models/test");
 const abcd = ["A.", "B.", "C.", "D."];
+const multer = require("multer");
+const upload = multer();
 router.get("/", (req, res) => {
   res.render("teachers/home");
 });
@@ -26,8 +28,8 @@ router.get("/add", async (req, res) => {
   }
 });
 
-router.post("/add", async (req, res) => {
-  res.send(JSON.stringify(req.body));
+router.post("/add", upload.none(), async (req, res) => {
+  res.send(req.body);
 });
 
 module.exports = router;

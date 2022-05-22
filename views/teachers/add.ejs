@@ -1,22 +1,22 @@
 <% layout("layouts/boilerplate") %>
 <div class="main">
   <img src="images/IMG_4019.JPG" alt="a picture" />
-  <form action="/teachers/add" method="POST">
+  <form action="/teachers/add" method="POST" enctype="multipart/form-data">
     <div class="add__category">
       <label for="category">Category:</label>
-      <input type="text" name="" id="category" />
+      <input type="text" name="add[category]" id="category" />
     </div>
     <div class="add__question">
       <label for="question">Question:</label>
-      <input type="text" name="" id="question" required />
+      <input type="text" name="add[question]" id="question" required />
     </div>
     <div class="add__answer">
       <label for="answer">Answer:</label>
-      <input type="text" name="" id="answer" required />
+      <input type="text" name="add[answer]" id="answer" required />
     </div>
     <div class="add__options">
       <label for="options">Options:</label>
-      <input type="text" name="" id="options" required />
+      <input type="text" name="add[options]" id="options" required />
     </div>
     <div class="add__submit">
       <button>Submit</button>
