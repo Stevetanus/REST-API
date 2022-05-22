@@ -1,0 +1,25 @@
+<% layout("layouts/boilerplate") %>
+<div class="main">
+  <img src="images/IMG_4019.JPG" alt="a picture" />
+  <form action="/teachers/add" method="POST">
+    <div class="add__category">
+      <label for="category">Category:</label>
+      <input type="text" name="" id="category" />
+    </div>
+    <div class="add__question">
+      <label for="question">Question:</label>
+      <input type="text" name="" id="question" required />
+    </div>
+    <div class="add__answer">
+      <label for="answer">Answer:</label>
+      <input type="text" name="" id="answer" required />
+    </div>
+    <div class="add__options">
+      <label for="options">Options:</label>
+      <input type="text" name="" id="options" required />
+    </div>
+    <div class="add__submit">
+      <button>Submit</button>
+    </div>
+  </form>
+</div>

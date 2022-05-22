@@ -1,0 +1,30 @@
+GET http://localhost:3001/tests
+
+###
+
+GET http://localhost:3001/tests/62890899130f5934f05ce715
+
+###
+POST http://localhost:3001/tests
+Content-Type: application/json
+
+{
+    "question": "請問下列關於「布林值」的敘述何者正確？",
+    "answer": "布林值可以用來進行流程判斷。",
+    "incorrect_answers": ["布林值是一種特殊的值，不能被賦予到變數上。","在 JavaScript 中，只有部分資料型別可以被轉型為布林值。","null 也是布林值的一種。"]
+}
+
+###
+DELETE http://localhost:3001/tests/628905a969ccf9f64a2109e7
+
+###
+PATCH http://localhost:3001/tests/628a22e15b7044c141380021
+Content-Type: application/json
+
+{
+    "answer": "宣告變數後，變數的值就會儲存至記憶體空間中。",
+    "incorrect_answers": ["同一個 JavaScript 檔案中的變數可以跨瀏覽器取用。","在主控台中宣告一個變數，並賦予其值，重新整理瀏覽器頁面後，還是可以在主控台取得之前宣告的變數值。"]
+}
+
+###
+GET http://localhost:3001/

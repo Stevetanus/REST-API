@@ -1,0 +1,17 @@
+<% layout("layouts/boilerplate") %>
+<h1>所有考題</h1>
+<div class="test__container">
+  <% for (let [i,test] of tests.entries()) {%>
+  <div class="test__card">
+    <div class="test__question">
+      <p>第<%- i+1 %>題</p>
+      <p><%= test.question %></p>
+    </div>
+    <div class="test__options">
+      <% test.options.forEach((option, i)=>{ %>
+      <div class="test__option"><%- abcd[i] %> <%= option %></div>
+      <% }) %>
+    </div>
+  </div>
+  <% } %>
+</div>
