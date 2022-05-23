@@ -20,6 +20,7 @@ router.get("/:id", getTest, (req, res) => {
 //  Creating One
 router.post("/", async (req, res) => {
   const test = new Test({
+    category: req.body.category,
     question: req.body.question,
     answer: req.body.answer,
     incorrect_answers: req.body.incorrect_answers,

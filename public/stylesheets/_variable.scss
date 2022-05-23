@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+
+@font-face {
+  font-family: "abc";
+  src: local("Comic Sans MS");
+}
+
+$font-family-base: abc, Noto Sans TC;
+$bgc-all-from: #fbab7e;
+$bgc-all-to: #f7ce68;

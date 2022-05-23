@@ -1,0 +1,25 @@
+.logo {
+  width: 120px;
+}
+form {
+  margin-bottom: 2%;
+  margin-top: 2%;
+  .add__question {
+    display: flex;
+    align-items: center;
+  }
+  input {
+    margin-top: 2%;
+    width: 100%;
+  }
+  .add__submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    border-radius: 2%;
+    transform: scale(1.5);
+  }
+  .textarea {
+    margin-top: 2%;
+  }
+}

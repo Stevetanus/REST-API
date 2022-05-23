@@ -9,9 +9,9 @@ POST http://localhost:3001/tests
 Content-Type: application/json
 
 {
-    "question": "請問下列關於「布林值」的敘述何者正確？",
-    "answer": "布林值可以用來進行流程判斷。",
-    "incorrect_answers": ["布林值是一種特殊的值，不能被賦予到變數上。","在 JavaScript 中，只有部分資料型別可以被轉型為布林值。","null 也是布林值的一種。"]
+    "question": "2022年的5月，Steven Wang在做什麼工作?",
+    "answer": "米蟲",
+    "incorrect_answers": ["網頁工程師","研究助理","登山嚮導","記者"]
 }
 
 ###

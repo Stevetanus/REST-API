@@ -1,0 +1,15 @@
+<% layout("layouts/boilerplate") %>
+<div class="individual">
+  <h2><%= test.question %></h2>
+  <% test.options.forEach((option, i)=>{ %>
+  <h3><%- abcd[i] %> <%= option %></h3>
+  <%}) %>
+  <div class="individual__function">
+    <div class="update">
+      <a href="/teachers/<%=test._id%>/edit"><h2>編輯</h2></a>
+    </div>
+    <div class="delete">
+      <a href=""><h2>刪除</h2></a>
+    </div>
+  </div>
+</div>

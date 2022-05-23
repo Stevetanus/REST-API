@@ -1,7 +1,11 @@
 <% layout("layouts/boilerplate") %>
 
 <img class="logo" src="/images/192.PNG" alt="a picture" />
-<form action="/teachers/add" method="POST" enctype="multipart/form-data">
+<form
+  action="/teachers/<%= test._id %>?_method=PUT"
+  method="POST"
+  enctype="multipart/form-data"
+>
   <div class="add__category">
     <label for="category">Category:</label>
     <select name="add[category]" id="category">
@@ -21,32 +25,31 @@
       cols="30"
       rows="5"
       class="textarea"
+      value="<%= test.question %>"
       required
     ></textarea>
   </div>
   <div class="add__answer">
     <label for="answer">Answer:</label>
-    <input type="text-area" name="add[answer]" id="answer" required />
+    <input
+      type="text-area"
+      name="add[answer]"
+      id="answer"
+      value="<%= test.answer %>"
+      required
+    />
   </div>
+  <% test.incorrect_answers.forEach((option)=>{ %>
   <div class="add__options">
     <label for="options">Options:</label>
-    <input type="text" name="add[options]" id="options" />
+    <input
+      type="text"
+      name="add[options]"
+      id="options"
+      value="<%= option %> "
+    />
   </div>
-  <div class="add__options">
-    <label for="options">Options:</label>
-    <input type="text" name="add[options]" id="options" />
-  </div>
-  <div class="add__options">
-    <label for="options">Options:</label>
-    <input type="text" name="add[options]" id="options" />
-  </div>
-  <div class="add__options">
-    <label for="options">Options:</label>
-    <input type="text" name="add[options]" id="options" />
-  </div>
-  <div class="add__notes">
-    <h3>*Answer is not included in options*</h3>
-  </div>
+  <%}) %>
   <div class="add__submit">
     <button>Submit</button>
   </div>

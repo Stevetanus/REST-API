@@ -17,7 +17,7 @@ const testSchema = new mongoose.Schema({
   },
   incorrect_answers: {
     type: Array,
-    required: true,
+    default: [],
   },
   createDate: {
     type: Date,
