@@ -28,7 +28,7 @@ a {
   color: #fff;
   opacity: 0.7;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   &:hover {
     opacity: 1;
     text-shadow: 2px 2px 4px $bgc-all-from;
@@ -71,7 +71,7 @@ footer {
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  padding: 0.5%;
+
   opacity: 0.8;
   .footer__left,
   .footer__main,
@@ -81,10 +81,14 @@ footer {
   &:hover {
     opacity: 1;
   }
+  .footer__left {
+    transform: scale(0.8);
+  }
   .footer__right {
     ul {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       li {
         list-style-type: none;
         padding: 2%;

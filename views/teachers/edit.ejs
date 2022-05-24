@@ -25,9 +25,10 @@
       cols="30"
       rows="5"
       class="textarea"
-      value="<%= test.question %>"
       required
-    ></textarea>
+    >
+<%= test.question %></textarea
+    >
   </div>
   <div class="add__answer">
     <label for="answer">Answer:</label>
@@ -42,14 +43,15 @@
   <% test.incorrect_answers.forEach((option)=>{ %>
   <div class="add__options">
     <label for="options">Options:</label>
-    <input
-      type="text"
-      name="add[options]"
-      id="options"
-      value="<%= option %> "
-    />
+    <input type="text" name="add[options]" id="options" value="<%=option%>" />
   </div>
   <%}) %>
+  <div class="add__notes">
+    <h3>*Be sure to select correct category*</h3>
+  </div>
+  <div class="add__notes">
+    <h3>*Answer is not included in options*</h3>
+  </div>
   <div class="add__submit">
     <button>Submit</button>
   </div>

@@ -381,7 +381,7 @@ a {
   color: #fff;
   opacity: 0.7;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 a:hover {
@@ -447,7 +447,6 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  padding: 0.5%;
   opacity: 0.8;
 }
 
@@ -461,6 +460,11 @@ footer:hover {
   opacity: 1;
 }
 
+footer .footer__left {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+
 footer .footer__right ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -468,6 +472,8 @@ footer .footer__right ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 footer .footer__right ul li {
@@ -603,6 +609,10 @@ form .textarea {
   margin-top: 2%;
 }
 
+form .add__notes {
+  margin-bottom: 15px;
+}
+
 .individual {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -624,10 +634,19 @@ form .textarea {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 5%;
+}
+
+.individual .individual__function button {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .individual .individual__function a {
   color: #000;
+  cursor: pointer;
 }
 /*# sourceMappingURL=home.css.map */

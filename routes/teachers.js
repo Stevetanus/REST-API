@@ -15,7 +15,7 @@ router.get("/all", async (req, res) => {
   let count;
   try {
     const tests = await Test.find({}).limit(10);
-
+    const count = (await Test.find({})).length;
     for (let test of tests) {
       test.options = [test.answer, ...test.incorrect_answers];
     }
@@ -25,7 +25,7 @@ router.get("/all", async (req, res) => {
   }
 });
 
-router.get("/all/:pages", async (req, res) => {
+router.get("/all/:pages([0-9]{2,3})", async (req, res) => {
   let pages = Number(req.params.pages);
   let page = Math.floor(pages / 10);
   if (isNaN(pages) || pages % 10 > 0) {
@@ -47,7 +47,7 @@ router.get("/all/:pages", async (req, res) => {
     }
   }
 });
-
+// create
 router.get("/add", async (req, res) => {
   try {
     res.render("teachers/add");
@@ -56,7 +56,22 @@ router.get("/add", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.post("/add", upload.none(), async (req, res) => {
+  try {
+    const test = new Test({
+      category: req.body.add.category,
+      question: req.body.add.question,
+      answer: req.body.add.answer,
+      incorrect_answers: req.body.add.options.filter(Boolean),
+    });
+    await test.save();
+    res.redirect(`${test._id}`);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+router.get("/:all?/:id([a-zA-Z0-9_]{10,})", async (req, res) => {
   try {
     const { id } = req.params;
     const test = await Test.findById(id);
@@ -75,29 +90,32 @@ router.get("/:id/edit", async (req, res) => {
     return res.redirect("/teachers/all");
   }
 });
-
-// router.post("/:id/edit", async (req, res) => {
-//   try {
-//     const test = await Test.findById(req.params.id);
-//     res.render("teachers/edit", { test });
-//   } catch (error) {
-//     return res.redirect("/teachers/all");
-//   }
-// });
-
-router.post("/add", upload.none(), async (req, res) => {
+// update
+router.put("/:id", upload.none(), async (req, res) => {
   try {
-    const test = new Test({
-      category: req.body.add.category,
-      question: req.body.add.question,
-      answer: req.body.add.answer,
-      incorrect_answers: req.body.add.options.filter(Boolean),
-    });
+    console.log(req.body);
+    const { id } = req.params;
+    const test = await Test.findByIdAndUpdate(
+      id,
+      {
+        $set: {
+          category: req.body.add.category,
+          question: req.body.add.question,
+          answer: req.body.add.answer,
+          incorrect_answers: req.body.add.options.filter(Boolean),
+        },
+      },
+      { new: true }
+    );
     await test.save();
-    res.redirect(`${test._id}`);
+    res.redirect(`/teachers/${test._id}`);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(400).send(error);
   }
 });
-
+//  delete
+router.delete("/:all?/:id([a-zA-Z0-9_]{10,})", async (req, res) => {
+  await Test.findByIdAndDelete(req.params.id);
+  res.redirect("/teachers/all");
+});
 module.exports = router;

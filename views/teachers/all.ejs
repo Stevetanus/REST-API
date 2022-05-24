@@ -20,9 +20,8 @@
 <div class="arrow__left">
   <a href="<%=link1%>"><i class="uil uil-arrow-left"></i></a></i></div>
   <% } %> 
-  <% if( (page*10 -count)> 1) {%>
-    <%} else{%> 
-<div class="arrow__right">
-  <a href="<%=link2%>"><i class="uil uil-arrow-right"></i></a>
-  </i></div>
+<% if( (page*10 - count) < 0) {%>
+    <div class="arrow__right">
+      <a href="<%=link2%>"><i class="uil uil-arrow-right"></i></a>
+    </i></div>
 <% } %> 

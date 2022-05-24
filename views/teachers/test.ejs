@@ -8,8 +8,15 @@
     <div class="update">
       <a href="/teachers/<%=test._id%>/edit"><h2>編輯</h2></a>
     </div>
+    <div class="prevpage">
+      <a onclick="history.go(-1);"><h2>上一頁</h2></a>
+    </div>
     <div class="delete">
-      <a href=""><h2>刪除</h2></a>
+      <form action="<%=test._id%>?_method=DELETE" method="POST">
+        <button>
+          <a><h2>刪除</h2></a>
+        </button>
+      </form>
     </div>
   </div>
 </div>
