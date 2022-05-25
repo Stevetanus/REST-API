@@ -11,7 +11,7 @@ dotenv.config();
 const ejsMate = require("ejs-mate");
 const path = require("path");
 const methodOverride = require("method-override");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || "3001";
 
 mongoose.connect(process.env.DB_URL), { useNewUrlParser: true };
 const db = mongoose.connection;
