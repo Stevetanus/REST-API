@@ -32,7 +32,7 @@ app.use("/tests", testsRouter);
 app.use("/teachers", teachersRouter);
 
 app.get("/", (req, res) => {
-  res.render("layouts/boilerplate");
+  res.redirect("/teachers");
 });
 
 app.listen(PORT, () =>
