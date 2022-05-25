@@ -12,6 +12,7 @@ const ejsMate = require("ejs-mate");
 const path = require("path");
 const methodOverride = require("method-override");
 const PORT = process.env.PORT || "3001";
+const cors = require("cors");
 
 mongoose.connect(process.env.DB_URL), { useNewUrlParser: true };
 const db = mongoose.connection;
@@ -20,6 +21,7 @@ db.once("open", () => console.log("Connected to Database"));
 
 // parse the incoming requests with JSON payloads basing on the bodyparser.
 app.use(express.json());
+app.use(cors());
 
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
@@ -39,9 +41,9 @@ app.get("/", (req, res) => {
   res.redirect("/teachers");
 });
 
-app.get("*", (req, res)=> {
-  res.redirect("/teachers")
-})
+app.get("*", (req, res) => {
+  res.redirect("/teachers");
+});
 app.listen(PORT, () =>
   console.log(`Server started at http://localhost:${PORT}`)
 );

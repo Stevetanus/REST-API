@@ -28,3 +28,6 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3001/tests/General
+
+###
+GET http://localhost:5000/tests/category

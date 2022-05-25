@@ -17,6 +17,22 @@ router.get("/:id([a-z0-9_]{20,})", getTest, (req, res) => {
   res.json(res.test);
 });
 
+// Getting all category
+router.get("/category", async (req, res) => {
+  const category = await Test.aggregate([
+    {
+      $unwind: "$category",
+    },
+    {
+      $group: {
+        _id: "$category",
+        categories: { $addToSet: "$category" },
+      },
+    },
+  ]);
+  res.json(category);
+});
+
 // Getting Category
 router.get("/:category", async (req, res) => {
   let fitTest;
@@ -30,23 +46,23 @@ router.get("/:category", async (req, res) => {
   res.json(fitTest);
 });
 
-//  Creating One
-router.post("/", async (req, res) => {
-  const test = new Test({
-    category: req.body.category,
-    question: req.body.question,
-    answer: req.body.answer,
-    incorrect_answers: req.body.incorrect_answers,
-  });
-  try {
-    const newTest = await test.save();
-    res.status(201).json(newTest);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
+//  Creating One is not allowed from the test route
+// router.post("/", async (req, res) => {
+//   const test = new Test({
+//     category: req.body.category,
+//     question: req.body.question,
+//     answer: req.body.answer,
+//     incorrect_answers: req.body.incorrect_answers,
+//   });
+//   try {
+//     const newTest = await test.save();
+//     res.status(201).json(newTest);
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// });
 
-//  Updating One are not allowed from the test route
+//  Updating One is not allowed from the test route
 // router.patch("/:id", getTest, async (req, res) => {
 //   if (req.body.question != null) {
 //     res.test.question = req.body.question;
@@ -65,7 +81,7 @@ router.post("/", async (req, res) => {
 //   }
 // });
 
-// Deleting One are not allowed from the test route
+// Deleting One is not allowed from the test route
 // router.delete("/:id", getTest, async (req, res) => {
 //   try {
 //     await res.test.remove();
