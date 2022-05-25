@@ -7,6 +7,7 @@ dotenv.config();
 const ejsMate = require("ejs-mate");
 const path = require("path");
 const methodOverride = require("method-override");
+const PORT = process.env.PORT || 3001;
 
 mongoose.connect(process.env.DB_URL), { useNewUrlParser: true };
 const db = mongoose.connection;
@@ -34,4 +35,6 @@ app.get("/", (req, res) => {
   res.render("layouts/boilerplate");
 });
 
-app.listen(3001, () => console.log(`Server started at localhost:3001`));
+app.listen(PORT, () =>
+  console.warn(`Server started at http://localhost:${PORT}`)
+);
