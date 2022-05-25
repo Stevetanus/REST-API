@@ -39,6 +39,9 @@ app.get("/", (req, res) => {
   res.redirect("/teachers");
 });
 
+app.get("*", (req, res)=> {
+  res.redirect("/teachers")
+})
 app.listen(PORT, () =>
   console.log(`Server started at http://localhost:${PORT}`)
 );

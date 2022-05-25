@@ -71,7 +71,7 @@ router.post("/add", upload.none(), async (req, res) => {
   }
 });
 
-router.get("/:all?/:id([a-zA-Z0-9_]{10,})", async (req, res) => {
+router.get("/:all?/:id([a-z0-9_]{20,})", async (req, res) => {
   try {
     const { id } = req.params;
     const test = await Test.findById(id);
@@ -114,7 +114,7 @@ router.put("/:id", upload.none(), async (req, res) => {
   }
 });
 //  delete
-router.delete("/:all?/:id([a-zA-Z0-9_]{10,})", async (req, res) => {
+router.delete("/:all?/:id([a-z0-9_]{20,})", async (req, res) => {
   await Test.findByIdAndDelete(req.params.id);
   res.redirect("/teachers/all");
 });
