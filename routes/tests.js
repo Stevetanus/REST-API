@@ -34,14 +34,15 @@ router.get("/category", async (req, res) => {
 });
 
 // Getting Category
-router.get("/:category", async (req, res) => {
+router.get("/:category/:key?", async (req, res) => {
   let fitTest;
+  let count = req.params.key;
   let categ =
     req.params.category[0].toUpperCase() + req.params.category.slice(1);
   if (req.params.category === "General Knowledge") {
-    fitTest = await Test.find({ category: { $regex: "General" } });
+    fitTest = await Test.find({ category: { $regex: "General" } }).limit(count);
   } else {
-    fitTest = await Test.find({ category: categ });
+    fitTest = await Test.find({ category: categ }).limit(count);
   }
   res.json(fitTest);
 });
